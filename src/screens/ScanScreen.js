@@ -47,16 +47,16 @@ export default function ScanScreen() {
 
       {/* Thông tin sản phẩm */}
       <View style={styles.scanInfo}>
-      <Image source={require('../assets/juice.png')} style={styles.scanImage} />
-
+        <Image source={require('../assets/juice.png')} style={styles.productThumbnail} />
         <View style={{ flex: 1 }}>
-          <Text style={styles.scanText}>Lauren's</Text>
-          <Text style={styles.scanTitle}>Orange Juice</Text>
+            <Text style={styles.scanText}>Lauren's</Text>
+            <Text style={styles.scanTitle}>Orange Juice</Text>
         </View>
+
         <TouchableOpacity style={styles.addButton}>
-          <Icon name="add" size={24} color="#fff" />
+        <Icon name="add" size={24} color="#fff" />
         </TouchableOpacity>
-      </View>
+        </View>
     </View>
   );
 }

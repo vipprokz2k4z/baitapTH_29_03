@@ -1,6 +1,13 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+
+const images = [
+  { id: '1', uri: 'https://source.unsplash.com/100x100/?fruit' },
+  { id: '2', uri: 'https://source.unsplash.com/100x100/?juice' },
+  { id: '3', uri: 'https://source.unsplash.com/100x100/?drink' },
+  { id: '4', uri: 'https://source.unsplash.com/100x100/?bottle' },
+];
 
 export default function HomeScreen() {
   return (
@@ -48,6 +55,19 @@ export default function HomeScreen() {
           <Icon name="chevron-forward-outline" size={24} color="#000" />
         </TouchableOpacity>
       </View>
+
+      {/* Horizontal Image Scroll */}
+      <FlatList
+        data={images}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.imageContainer}>
+            <Image source={{ uri: item.uri }} style={styles.image} />
+          </View>
+        )}
+      />
     </View>
   );
 }
@@ -114,5 +134,15 @@ const styles = StyleSheet.create({
   exploreTitle: {
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  imageContainer: {
+    marginRight: 10,
+    borderRadius: 10,
+    overflow: 'hidden',
+  },
+  image: {
+    width: 100,
+    height: 100,
+    borderRadius: 10,
   },
 });
